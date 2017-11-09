@@ -11,18 +11,29 @@
 			left:0px;
 			right:0px;
 		}
-		#infor{
+		/*#infor{
 			bottom:0px;
 			left:0px;
 			position:absolute;
 			display: none;
-		}
+		}*/
 		#refresh{
 			bottom:0px;
 			right:0px;
 			position:absolute;
 		}
-		#myDiv {
+		#form{
+			bottom:0px;
+			left:0px;
+			position:absolute;
+		}
+		#llista{
+			bottom:0px;
+			right:50%;
+			left:50%;
+			position:absolute;
+		}
+		/*#myDiv {
 		   position: absolute;
 		   top: 0;
 		   left: 0;
@@ -42,7 +53,7 @@
 		}
 		#contingut2{
 			text-align: center;
-		}
+		}*/
 	</style>
 	<!--ESTILS DE BOOTSTRAP -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet"/>
@@ -130,6 +141,9 @@
 				//PASSAR LES COORDENADES AL FORMULARI
 				formulari.find("input[name='LongX']").val(llista[1]);
 				formulari.find("input[name='LatY']").val(llista[0]);
+
+				window.localStorage.setItem("LatY", llista[0]);
+				window.localStorage.setItem("LongX", llista[1]);
 				
 				//DEIXAR NOMÉS 1 MARCADOR AL MAPA
 				//GUARDAR EL MARCADOR A L'ARRAY
@@ -286,14 +300,19 @@
 	</script>
 </head>
 <body>
-	<div id="mapa">
-	
+	<div data-role="page" id="paginaMapa" data-url="map-page">
+		<div id="mapa"></div>
+		
+		<button id="refresh" onclick=location.reload()>Refrescar</button>
+		
+		<input type="button" id="llista" onclick="location.href='llistat_ofertes.html';" value="Ofertes" />
+		
+		<input type="button" id="form" onclick="location.href='formulari.html';" value="Formulari" />
+		
 	</div>
-	<div id="refresh">
-		<button onclick=location.reload()>Refrescar</button>
-	</div>
 	
-	<div id="infor">
+	
+	<!--<div id="infor">
 		<form id="formulari">
 			<table>				
 				<tr>
@@ -320,6 +339,6 @@
 				}
 			</script>
 		</div>
-	</div>	
+	</div>	-->
 </body>
 </html>

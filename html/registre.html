@@ -13,7 +13,7 @@
 		$(document).on("ready", function(){
 		
 			$.ajax({type: "POST",
-				url:"http://www.grupllobet.com/apptest/App1/veure_poblacions.php",
+				url:"localhost/veure_poblacions.php",
 				cache: false,
 				dataType: "text",
 				success: Buscar_poblacions
@@ -47,7 +47,7 @@
 							$("#Passw").val("");
 							$("#Passw2").val("");
 							$.ajax({type: "POST",
-								url:"http://www.grupllobet.com/apptest/App1/registre.php",
+								url:"localhost/registre.php",
 								data:({Email: fEmail, Passw: fPassw}),
 								cache: false,
 								dataType: "text",
