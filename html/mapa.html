@@ -22,7 +22,7 @@
 			right:0px;
 			position:absolute;
 		}*/
-		#form{
+		#formu{
 			bottom:0px;
 			left:0px;
 			position:absolute;
@@ -79,9 +79,18 @@
 				llista[i].setMap(null);
 			}
 		}
+
 		
 		$(document).on("ready", function(){
-			
+			$("#formu").click(function(){
+		        $.post("formulari.html",
+		        {
+		          LongX: llista[1],
+		          LatY: llista[0]
+		        })
+		        location.href="formulari.html";
+		    });
+
 			var formulari = $("#formulari");
 		
 			var defaultPos = new google.maps.LatLng(19.289168,-99.653440);
@@ -138,10 +147,11 @@
 				});
 				
 				//PASSAR LES COORDENADES AL FORMULARI
-				formulari.find("input[name='LongX']").val(llista[1]);
-				formulari.find("input[name='LatY']").val(llista[0]);
-				window.localStorage.setItem("LatY", llista[0]);
-				window.localStorage.setItem("LongX", llista[1]);
+				//formulari.find("input[name='LongX']").val(llista[1]);
+				//formulari.find("input[name='LatY']").val(llista[0]);
+
+				//window.localStorage.setItem("LatY", llista[0]);
+				//window.localStorage.setItem("LongX", llista[1]);
 				
 				//DEIXAR NOMÉS 1 MARCADOR AL MAPA
 				//GUARDAR EL MARCADOR A L'ARRAY
@@ -158,6 +168,7 @@
 				//UBICAR EL MARCADOR EN EL MAPA
 				marcador.setMap(mapa);		
 			
+
 				/*$.ajax({type: "POST", 
 					url: "http://www.grupllobet.com/apptest/App1/llista.php",
 					dataType: "text",
@@ -226,6 +237,7 @@
 												});
 												//UBICAR EL MARCADOR AL MAPA
 												marca.setMap(mapa);
+
 												
 												var infowindow = new google.maps.InfoWindow({
 													position: posi,
@@ -283,8 +295,10 @@
 			}
 			
 			/*function Refrescar(){       
+
 				location.reload();
 			}
+
 			setInterval(Refrescar,30000);*/
 			
 		
@@ -302,7 +316,8 @@
 		
 		<input type="button" id="llista" onclick="location.href='llistat_ofertes.html';" value="Ofertes" />
 		
-		<input type="button" id="form" onclick="location.href='formulari.html';" value="Formulari" />
+		<!--<input type="button" id="form" onclick="location.href='formulari.html';" value="Formulari" />-->
+		<button id="formu" name="formu">Formulari</button>
 		
 	</div>
 	
