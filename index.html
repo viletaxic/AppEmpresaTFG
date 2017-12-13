@@ -8,7 +8,7 @@
 	<!--ARXIUS JAVASCRIPT DE BOOTSTRAP -->
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/md5.js"></script>
-	<!--<script>
+	<script>
 	$(function(){
 	
 		var email_local = localStorage.getItem("Email");
@@ -23,7 +23,7 @@
 				$("#Passw").val("");
 
 				$.ajax({type: "POST",
-					url:"http://www.grupllobet.com/apptest/App1/login.php",
+					url:"http://192.168.0.164/AppEmpresaTFG/php/login.php",
 					data:({Email: fEmail, Passw: fPassw}),
 					cache: false,
 					dataType: "text",
@@ -48,7 +48,7 @@
 			}
 		});
 	});
-	</script>-->
+	</script>
 </head>
 <body id="Cos">
 	<div id="Login">
@@ -68,7 +68,7 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="button" onclick="location.href='html/mapa.html';" value="Entrar" /></td>
+						<td><button type="button" id="ferlogin">Entrar</button></td>
 					</tr>
 				</table>
 			</form>
