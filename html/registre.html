@@ -47,10 +47,10 @@
 							$("#Passw").val("");
 							$("#Passw2").val("");
 							$.ajax({type: "POST",
-								url:"../php/registre.php",
+								url:"http://192.168.0.164/AppEmpresaTFG/php/registre.php",
 								data:({Email: fEmail, Passw: fPassw}),
 								cache: false,
-								dataType: "text",
+								dataType: "xml",
 								success: Enviar
 							});
 							function Enviar(data){
