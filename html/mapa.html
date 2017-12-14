@@ -142,7 +142,7 @@
 
 					//VARIABLE PEL MARCADOR
 					var marcador = new google.maps.Marker({
-						position: coordenades, //POSICIO DEL NOU MARCADOR
+						position: event.latLng, //POSICIO DEL NOU MARCADOR
 						icon:'../imatges/green-dot.png',
 						animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
 						draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
