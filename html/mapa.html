@@ -64,112 +64,106 @@
 	<!--ARXIUS JAVASCRIPT DE BOOTSTRAP -->
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 	<script>
-		//VARIABLES GENERALS
-		//ARRAY PER EMMAGATZEMAR NOUS MARCADORS
-		var marcadors_nous = [];
-		var marcadors_bd = [];
-		var mapa = null;
-		//FUNCIO PER TREURE MARCADORS DEL MAPA
-		function treure_marcadors(llista)
+			//VARIABLES GENERALS
+	//ARRAY PER EMMAGATZEMAR NOUS MARCADORS
+	var marcadors_nous = [];
+	var marcadors_bd = [];
+	var mapa = null;
+	//FUNCIO PER TREURE MARCADORS DEL MAPA
+	function treure_marcadors(llista)
+	{
+		//RECORRE L'ARRAY DE MARCADORS	
+		for(i in llista)
 		{
-			//RECORRE L'ARRAY DE MARCADORS	
-			for(i in llista)
-			{
-				//TREURE MARCADOR DEL MAPA
-				llista[i].setMap(null);
-			}
+			//TREURE MARCADOR DEL MAPA
+			llista[i].setMap(null);
 		}
-
+	}
+	
+	$(document).on("ready", function(){
 		
-		$(document).on("ready", function(){
-			$("#formu").click(function(){
-		        $.post("formulari.html",
-		        {
-		          LongX: llista[1],
-		          LatY: llista[0]
-		        })
-		        location.href="formulari.html";
-		    });
-
-			var formulari = $("#formulari");
-		
-			var defaultPos = new google.maps.LatLng(19.289168,-99.653440);
-					
-			if (navigator.geolocation) {
-				function exito(pos) {
-					MuestraMapa(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-				}
-				function falla(error) {
-					//si falla mostrar mpara en posicion por defecto
-					alert('Error en servicio Geolocalizador');
-					MuestraMapa(defaultPos); 
-				}
+		var formulari = $("#formulari");
+	
+		var defaultPos = new google.maps.LatLng(19.289168,-99.653440);
 				
-				//maximumAge- Guarda la posicion por x minutos 
-				//enableHighAccuracy: Se tratan de obtener los mejores resultados posible del GPS
-				//timeout: el tiempo maximo que se espera para obtener la posicion en este caso 15 segundos
-				var options = {maximumAge: 30000, enableHighAccuracy:true, timeout: 15000};
-				navigator.geolocation.getCurrentPosition(exito, falla, options );
-			}//FIN IF
-			else {
-				MuestraMapa(defaultPos);  // No soporta geolocalizacion y dibuja el mapa en posicion Default
-			}	
-			 
-			//FUNCION DIBUJAR MAPa
-			function MuestraMapa(latlng) {
-				var config = {
-				zoom: 16,
-				center: latlng,
-				disableDefaultUI: true,
-				mapTypeId: google.maps.MapTypeId.ROADMAP};
+		if (navigator.geolocation) {
+		    function exito(pos) {
+				MuestraMapa(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+			}
+			function falla(error) {
+				//si falla mostrar mpara en posicion por defecto
+				alert('Error en servicio Geolocalizador');
+				MuestraMapa(defaultPos); 
+			}
+						
+			//maximumAge- Guarda la posicion por 5 minutos 
+			//enableHighAccuracy: Se tratan de obtener los mejores resultados posible del GPS
+			//timeout: el tiempo maximo que se espera para obtener la posicion en este caso 5 segundos
+			var options = {maximumAge: 500000, enableHighAccuracy:true, timeout: 5000};
+			navigator.geolocation.getCurrentPosition(exito, falla, options );
+		}//FIN IF
+		else {
+            MuestraMapa(defaultPos);  // No soporta geolocalizacion y dibuja el mapa en posicion Default
+        }
+	
+					 
+		//FUNCION DIBUJAR MAPa
+		function MuestraMapa(latlng) {
+			var config = {
+            zoom: 16,
+            center: latlng,
+			disableDefaultUI: true,
+            mapTypeId: google.maps.MapTypeId.ROADMAP};
+						
+			mapa = new google.maps.Map(document.getElementById("mapa"), config);
+			
+			//google.maps.event.addListener(mapa, "click", function(event){
+			
+				//MOSTRAR UNA ALERTA AL HACER CLICK AL MAPA
+				//EL EVENTO CLICK EN EL MAPA OFRECE UN PARAMETRO EVENTO
+				//EL CUAL DEVUELVE LAS COORDENADAS DE DONDE SE HIZO CLICK
+				//alert(event.latLng);
+				//COORDENADES
+				var coordenades = String(latlng);//event.latLng.toString();
 				
-				mapa = new google.maps.Map(document.getElementById("mapa"), config);
+				//REMOURE PARENTESIS
+				coordenades = coordenades.replace("(","");
+				coordenades = coordenades.replace(")","");
+				//COORDENADES PER SEPARAT
+				var llista = coordenades.split(",");
 				
-				google.maps.event.addListener(mapa, "click", function(event){
-					//MOSTRAR UNA ALERTA AL HACER CLICK AL MAPA
-					//EL EVENTO CLICK EN EL MAPA OFRECE UN PARAMETRO EVENTO
-					//EL CUAL DEVUELVE LAS COORDENADAS DE DONDE SE HIZO CLICK
-					//alert(event.latLng);
-					//COORDENADES
-					var coordenades = event.latLng.toString();//String(latlng);
-					
-					//REMOURE PARENTESIS
-					coordenades = coordenades.replace("(","");
-					coordenades = coordenades.replace(")","");
-					//COORDENADES PER SEPARAT
-					var llista = coordenades.split(",");
-					
-					var direccio = new google.maps.LatLng(llista[0], llista[1]);
-
-					//VARIABLE PEL MARCADOR
-					var marcador = new google.maps.Marker({
-						position: direccio, //POSICIO DEL NOU MARCADOR
-						icon:'../imatges/green-dot.png',
-						animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
-						draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
-					});
-				
-					//PASSAR LES COORDENADES AL FORMULARI
-					//formulari.find("input[name='LongX']").val(llista[1]);
-					//formulari.find("input[name='LatY']").val(llista[0]);
-
-					//window.localStorage.setItem("LatY", llista[0]);
-					//window.localStorage.setItem("LongX", llista[1]);
-
-					//DEIXAR NOMÉS 1 MARCADOR AL MAPA
-					//GUARDAR EL MARCADOR A L'ARRAY
-					marcadors_nous.push(marcador);
-				
-					//AGREGAR EVENT CLICK AL MARCADOR
-					google.maps.event.addListener(marcador, "click", function(){
-
-					});	
+				//VARIABLE PEL MARCADOR
+				var marcador = new google.maps.Marker({
+					position: latlng, //POSICIO DEL NOU MARCADOR
+					animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
+					draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
 				});
+				
+				//PASSAR LES COORDENADES AL FORMULARI
+				formulari.find("input[name='LongX']").val(llista[1]);
+				formulari.find("input[name='LatY']").val(llista[0]);
+				formulari.find("input[name='Descripcion']").val();
+				//UBICAR EL FOCUS AL CAMP TITOL
+				formulari.find("input[name='Nombre']").focus();
+				
+				
+				//DEIXAR NOMÉS 1 MARCADOR AL MAPA
+				//GUARDAR EL MARCADOR A L'ARRAY
+				marcadors_nous.push(marcador);
+				
+				//AGREGAR EVENT CLICK AL MARCADOR
+				google.maps.event.addListener(marcador, "click", function(){
+					
+				});	
+				
 				//ABANS D'UBICAR EL MARCADOR EN EL MAPA TREURE TOTS ELS DEMES
 				//I AIXÍ DEIXAR-NE NOMÉS UN
 				//treure_marcadors(marcadors_nous);
 				//UBICAR EL MARCADOR EN EL MAPA
-				marcador.setMap(mapa);		
+				marcador.setMap(mapa);
+				
+			//});
+		}// Fin muestra mapa
 			
 
 				/*$.ajax({type: "POST", 
