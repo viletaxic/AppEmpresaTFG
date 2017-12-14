@@ -126,7 +126,6 @@
 				mapa = new google.maps.Map(document.getElementById("mapa"), config);
 				
 				google.maps.event.addListener(mapa, "click", function(event){
-					treure_marcadors(llista);
 					//MOSTRAR UNA ALERTA AL HACER CLICK AL MAPA
 					//EL EVENTO CLICK EN EL MAPA OFRECE UN PARAMETRO EVENTO
 					//EL CUAL DEVUELVE LAS COORDENADAS DE DONDE SE HIZO CLICK
@@ -167,7 +166,7 @@
 
 					//ABANS D'UBICAR EL MARCADOR EN EL MAPA TREURE TOTS ELS DEMES
 					//I AIXÍ DEIXAR-NE NOMÉS UN
-					//treure_marcadors(marcadors_nous);
+					treure_marcadors(marcadors_nous);
 					//UBICAR EL MARCADOR EN EL MAPA
 					marcador.setMap(mapa);		
 				});
