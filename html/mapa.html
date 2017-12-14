@@ -125,49 +125,50 @@
 				
 				mapa = new google.maps.Map(document.getElementById("mapa"), config);
 				
-				//MOSTRAR UNA ALERTA AL HACER CLICK AL MAPA
-				//EL EVENTO CLICK EN EL MAPA OFRECE UN PARAMETRO EVENTO
-				//EL CUAL DEVUELVE LAS COORDENADAS DE DONDE SE HIZO CLICK
-				//alert(event.latLng);
-				//COORDENADES
-				var coordenades = String(latlng);//event.latLng.toString();
-				
-				//REMOURE PARENTESIS
-				coordenades = coordenades.replace("(","");
-				coordenades = coordenades.replace(")","");
-				//COORDENADES PER SEPARAT
-				var llista = coordenades.split(",");
-				
-				//VARIABLE PEL MARCADOR
-				var marcador = new google.maps.Marker({
-					position: latlng, //POSICIO DEL NOU MARCADOR
-					icon:'../imatges/green-dot.png',
-					animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
-					draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
-				});
-				
-				//PASSAR LES COORDENADES AL FORMULARI
-				//formulari.find("input[name='LongX']").val(llista[1]);
-				//formulari.find("input[name='LatY']").val(llista[0]);
+				google.maps.event.addListener(mapa, "click", function(event){
+					//MOSTRAR UNA ALERTA AL HACER CLICK AL MAPA
+					//EL EVENTO CLICK EN EL MAPA OFRECE UN PARAMETRO EVENTO
+					//EL CUAL DEVUELVE LAS COORDENADAS DE DONDE SE HIZO CLICK
+					//alert(event.latLng);
+					//COORDENADES
+					var coordenades = event.latLng.toString();//String(latlng);
 
-				//window.localStorage.setItem("LatY", llista[0]);
-				//window.localStorage.setItem("LongX", llista[1]);
-				
-				//DEIXAR NOMÉS 1 MARCADOR AL MAPA
-				//GUARDAR EL MARCADOR A L'ARRAY
-				marcadors_nous.push(marcador);
-				
-				//AGREGAR EVENT CLICK AL MARCADOR
-				google.maps.event.addListener(marcador, "click", function(){
-					
-				});	
-				
-				//ABANS D'UBICAR EL MARCADOR EN EL MAPA TREURE TOTS ELS DEMES
-				//I AIXÍ DEIXAR-NE NOMÉS UN
-				//treure_marcadors(marcadors_nous);
-				//UBICAR EL MARCADOR EN EL MAPA
-				marcador.setMap(mapa);		
-			
+					//REMOURE PARENTESIS
+					coordenades = coordenades.replace("(","");
+					coordenades = coordenades.replace(")","");
+					//COORDENADES PER SEPARAT
+					var llista = coordenades.split(",");
+
+					//VARIABLE PEL MARCADOR
+					var marcador = new google.maps.Marker({
+						position: latlng, //POSICIO DEL NOU MARCADOR
+						icon:'../imatges/green-dot.png',
+						animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
+						draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
+					});
+
+					//PASSAR LES COORDENADES AL FORMULARI
+					//formulari.find("input[name='LongX']").val(llista[1]);
+					//formulari.find("input[name='LatY']").val(llista[0]);
+
+					//window.localStorage.setItem("LatY", llista[0]);
+					//window.localStorage.setItem("LongX", llista[1]);
+
+					//DEIXAR NOMÉS 1 MARCADOR AL MAPA
+					//GUARDAR EL MARCADOR A L'ARRAY
+					marcadors_nous.push(marcador);
+
+					//AGREGAR EVENT CLICK AL MARCADOR
+					google.maps.event.addListener(marcador, "click", function(){
+
+					});	
+
+					//ABANS D'UBICAR EL MARCADOR EN EL MAPA TREURE TOTS ELS DEMES
+					//I AIXÍ DEIXAR-NE NOMÉS UN
+					//treure_marcadors(marcadors_nous);
+					//UBICAR EL MARCADOR EN EL MAPA
+					marcador.setMap(mapa);		
+				});
 
 				/*$.ajax({type: "POST", 
 					url: "http://www.grupllobet.com/apptest/App1/llista.php",
