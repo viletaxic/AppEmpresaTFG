@@ -99,71 +99,70 @@
 			//maximumAge- Guarda la posicion por 5 minutos 
 			//enableHighAccuracy: Se tratan de obtener los mejores resultados posible del GPS
 			//timeout: el tiempo maximo que se espera para obtener la posicion en este caso 5 segundos
-			var options = {maximumAge: 500000, enableHighAccuracy:true, timeout: 5000};
+			var options = {maximumAge: 30000, enableHighAccuracy:true, timeout: 15000};
 			navigator.geolocation.getCurrentPosition(exito, falla, options );
 		}//FIN IF
 		else {
-            MuestraMapa(defaultPos);  // No soporta geolocalizacion y dibuja el mapa en posicion Default
-        }
+            		MuestraMapa(defaultPos);  // No soporta geolocalizacion y dibuja el mapa en posicion Default
+        	}
 	
 					 
 		//FUNCION DIBUJAR MAPa
 		function MuestraMapa(latlng) {
 			var config = {
-            zoom: 16,
-            center: latlng,
+            		zoom: 16,
+            		center: latlng,
 			disableDefaultUI: true,
-            mapTypeId: google.maps.MapTypeId.ROADMAP};
+            		mapTypeId: google.maps.MapTypeId.ROADMAP};
 						
 			mapa = new google.maps.Map(document.getElementById("mapa"), config);
 			
-			//google.maps.event.addListener(mapa, "click", function(event){
+			google.maps.event.addListener(mapa, "click", function(event){
 			
-				//MOSTRAR UNA ALERTA AL HACER CLICK AL MAPA
-				//EL EVENTO CLICK EN EL MAPA OFRECE UN PARAMETRO EVENTO
-				//EL CUAL DEVUELVE LAS COORDENADAS DE DONDE SE HIZO CLICK
-				//alert(event.latLng);
-				//COORDENADES
-				var coordenades = String(latlng);//event.latLng.toString();
+			//MOSTRAR UNA ALERTA AL HACER CLICK AL MAPA
+			//EL EVENTO CLICK EN EL MAPA OFRECE UN PARAMETRO EVENTO
+			//EL CUAL DEVUELVE LAS COORDENADAS DE DONDE SE HIZO CLICK
+			//alert(event.latLng);
+			//COORDENADES
+			var coordenades = event.latLng.toString();//String(latlng);
 				
-				//REMOURE PARENTESIS
-				coordenades = coordenades.replace("(","");
-				coordenades = coordenades.replace(")","");
-				//COORDENADES PER SEPARAT
-				var llista = coordenades.split(",");
+			//REMOURE PARENTESIS
+			coordenades = coordenades.replace("(","");
+			coordenades = coordenades.replace(")","");
+			//COORDENADES PER SEPARAT
+			var llista = coordenades.split(",");
 				
-				//VARIABLE PEL MARCADOR
-				var marcador = new google.maps.Marker({
-					position: latlng, //POSICIO DEL NOU MARCADOR
-					animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
-					draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
-				});
+			//VARIABLE PEL MARCADOR
+			var marcador = new google.maps.Marker({
+				position: latlng, //POSICIO DEL NOU MARCADOR
+				animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
+				draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
+			});
+			/*	
+			//PASSAR LES COORDENADES AL FORMULARI
+			formulari.find("input[name='LongX']").val(llista[1]);
+			formulari.find("input[name='LatY']").val(llista[0]);
+			formulari.find("input[name='Descripcion']").val();
+			//UBICAR EL FOCUS AL CAMP TITOL
+			formulari.find("input[name='Nombre']").focus();
+			*/	
 				
-				//PASSAR LES COORDENADES AL FORMULARI
-				formulari.find("input[name='LongX']").val(llista[1]);
-				formulari.find("input[name='LatY']").val(llista[0]);
-				formulari.find("input[name='Descripcion']").val();
-				//UBICAR EL FOCUS AL CAMP TITOL
-				formulari.find("input[name='Nombre']").focus();
+			//DEIXAR NOMÉS 1 MARCADOR AL MAPA
+			//GUARDAR EL MARCADOR A L'ARRAY
+			marcadors_nous.push(marcador);
 				
+			//AGREGAR EVENT CLICK AL MARCADOR
+			google.maps.event.addListener(marcador, "click", function(){
+
+			});	
 				
-				//DEIXAR NOMÉS 1 MARCADOR AL MAPA
-				//GUARDAR EL MARCADOR A L'ARRAY
-				marcadors_nous.push(marcador);
+			//ABANS D'UBICAR EL MARCADOR EN EL MAPA TREURE TOTS ELS DEMES
+			//I AIXÍ DEIXAR-NE NOMÉS UN
+			//treure_marcadors(marcadors_nous);
+			//UBICAR EL MARCADOR EN EL MAPA
+			marcador.setMap(mapa);
 				
-				//AGREGAR EVENT CLICK AL MARCADOR
-				google.maps.event.addListener(marcador, "click", function(){
-					
-				});	
-				
-				//ABANS D'UBICAR EL MARCADOR EN EL MAPA TREURE TOTS ELS DEMES
-				//I AIXÍ DEIXAR-NE NOMÉS UN
-				//treure_marcadors(marcadors_nous);
-				//UBICAR EL MARCADOR EN EL MAPA
-				marcador.setMap(mapa);
-				
-			//});
-		}// Fin muestra mapa
+
 			
 
 				/*$.ajax({type: "POST", 
