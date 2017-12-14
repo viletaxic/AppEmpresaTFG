@@ -126,6 +126,7 @@
 				mapa = new google.maps.Map(document.getElementById("mapa"), config);
 				
 				google.maps.event.addListener(mapa, "click", function(event){
+					
 					//MOSTRAR UNA ALERTA AL HACER CLICK AL MAPA
 					//EL EVENTO CLICK EN EL MAPA OFRECE UN PARAMETRO EVENTO
 					//EL CUAL DEVUELVE LAS COORDENADAS DE DONDE SE HIZO CLICK
@@ -141,7 +142,7 @@
 
 					//VARIABLE PEL MARCADOR
 					var marcador = new google.maps.Marker({
-						position: latlng, //POSICIO DEL NOU MARCADOR
+						position: coordenades, //POSICIO DEL NOU MARCADOR
 						icon:'../imatges/green-dot.png',
 						animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
 						draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
