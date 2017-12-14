@@ -126,7 +126,7 @@
 				mapa = new google.maps.Map(document.getElementById("mapa"), config);
 				
 				google.maps.event.addListener(mapa, "click", function(event){
-					
+					treure_marcadors(llista);
 					//MOSTRAR UNA ALERTA AL HACER CLICK AL MAPA
 					//EL EVENTO CLICK EN EL MAPA OFRECE UN PARAMETRO EVENTO
 					//EL CUAL DEVUELVE LAS COORDENADAS DE DONDE SE HIZO CLICK
@@ -139,7 +139,8 @@
 					coordenades = coordenades.replace(")","");
 					//COORDENADES PER SEPARAT
 					var llista = coordenades.split(",");
-
+					
+					
 					//VARIABLE PEL MARCADOR
 					var marcador = new google.maps.Marker({
 						position: event.latLng, //POSICIO DEL NOU MARCADOR
