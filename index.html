@@ -10,12 +10,8 @@
 	<script type="text/javascript" src="js/md5.js"></script>
 	<script>
 	$(function(){
-	
-		var email_local = localStorage.getItem("Email");
 		$(document).on("ready", function(){
-			$("#Email").val(email_local);
-			
-			$("ferlogin").click(function(){
+			$("#ferlogin").click(function(){
 				alert("click");
 				var fEmail = $("#Email").val();
 				var fPassw = $("#Passw").val();
