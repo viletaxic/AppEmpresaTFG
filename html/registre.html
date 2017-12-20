@@ -13,9 +13,9 @@
 		$(document).on("ready", function(){
 		
 			$.ajax({type: "POST",
-				url:"http://192.168.0.164/AppEmpresaTFG/php/veure_poblacions.php",
+				url:"http://158.109.8.89/php/veure_poblacions.php",
 				cache: false,
-				dataType: "html",
+				dataType: "text",
 				success: Buscar_poblacions
 			});
 			function Buscar_poblacions(data){
@@ -46,8 +46,9 @@
 							$("#Email").val("");
 							$("#Passw").val("");
 							$("#Passw2").val("");
+							alert(fEmail);
 							$.ajax({type: "POST",
-								url:"http://192.168.0.164/AppEmpresaTFG/php/registre.php",
+								url:"http://158.109.8.89/php/registre.php",
 								data:({Email: fEmail, Passw: fPassw}),
 								cache: false,
 								dataType: "text",
