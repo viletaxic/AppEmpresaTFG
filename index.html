@@ -27,6 +27,7 @@
 				});
 			});
 			function Enviar(data){
+				
 				var dades = data.split("#");
 				if (dades[2] != true) {
 					
@@ -35,8 +36,8 @@
 				else{
 					window.localStorage.setItem("Id", dades[0]);
 					window.localStorage.setItem("Email", dades[1]);
-					location.href="/html/mapa.html";
-				}				
+					window.location.href="html/mapa.html";
+				}			
 				/** GUARDAMOS DATOS EN localStorage **/		
 				//window.localStorage.setItem("id_user", data.id_user);
 				//window.localStorage.setItem("username", data.username);
