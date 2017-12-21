@@ -84,7 +84,6 @@
 				llista[i].setMap(null);
 			}
 		}
-
 		
 		$(document).on("ready", function(){
 			$("#formu").click(function(){
@@ -95,7 +94,6 @@
 		        })
 		        location.href="formulari.html";
 		    });
-
 			var formulari = $("#formulari");
 		
 			var defaultPos = new google.maps.LatLng(19.289168,-99.653440);
@@ -137,7 +135,6 @@
 					//alert(event.latLng);
 					//COORDENADES
 					var coordenades = String(event.latLng);//event.latLng.toString();
-
 					//REMOURE PARENTESIS
 					coordenades = coordenades.replace("(","");
 					coordenades = coordenades.replace(")","");
@@ -157,27 +154,21 @@
 					//PASSAR LES COORDENADES AL FORMULARI
 					//formulari.find("input[name='LongX']").val(llista[1]);
 					//formulari.find("input[name='LatY']").val(llista[0]);
-
 					//window.localStorage.setItem("LatY", llista[0]);
 					//window.localStorage.setItem("LongX", llista[1]);
-
 					//DEIXAR NOMÉS 1 MARCADOR AL MAPA
 					//GUARDAR EL MARCADOR A L'ARRAY
 					marcadors_nous.push(marcador);
-
 					//AGREGAR EVENT CLICK AL MARCADOR
 					google.maps.event.addListener(marcador, "click", function(){
-
 					});	
-
 					//ABANS D'UBICAR EL MARCADOR EN EL MAPA TREURE TOTS ELS DEMES
 					//I AIXÍ DEIXAR-NE NOMÉS UN
 					treure_marcadors(marcadors_nous);
 					//UBICAR EL MARCADOR EN EL MAPA
 					marcador.setMap(mapa);		
 				});
-
-				/*$.ajax({type: "POST", 
+				$.ajax({type: "POST", 
 					url: "http://www.grupllobet.com/apptest/App1/llista.php",
 					dataType: "text",
 					success:function(data){
@@ -192,7 +183,9 @@
 							var d = 2;
 							var y = 3;
 							var x = 4;
-							var l = 5;
+							var f = 5;
+							var h = 6;
+							/*var l = 5;
 							var im = 6;
 							var alerta = 7;
 							var alertaImagen = 8;
@@ -204,16 +197,16 @@
 								success:function(data){
 									
 									//AGAFO EL PARAMETRE VALOR DE LA TAULA CONFIG, ELS GUARDO EN UN STRING, I FAIG UN SPLIT PER SEPARAR-LOS I GUARDAR-LOS EN UN ARRAY.
-									var limits = data.split("#");
+									var limits = data.split("#");*/
 									
 									for (;dades[i];) {
 									
-										var posiactual = new google.maps.LatLng(llista[0], llista[1]);
+										//var posiactual = new google.maps.LatLng(llista[0], llista[1]);
 									
 										//OBTENIR LES COORDENADES DEL PUNT
 										var posi = new google.maps.LatLng(dades[y], dades[x]);
 										
-										var distancia = google.maps.geometry.spherical.computeDistanceBetween(posiactual, posi);
+										/*var distancia = google.maps.geometry.spherical.computeDistanceBetween(posiactual, posi);
 										
 										//SI LA DISTANCIA ÉS IGUAL O MENOR A 1000.
 										if(distancia <= limits[1]){
@@ -242,19 +235,25 @@
 												$.ajax({type: "POST",
 													url: "http://www.grupllobet.com/apptest/App1/log_marcas.php",
 													data: ({IdUser: fIdUser, IdMarca: fIdMarca})
+												});*/
+
+												//CARREGAR LES PROPIETATS AL MARCADOR
+												var marca = new google.maps.Marker({
+													idMarcador:dades[i],
+													position:posi,
+													titol: dades[n]
 												});
 												//UBICAR EL MARCADOR AL MAPA
 												marca.setMap(mapa);
-
 												
 												var infowindow = new google.maps.InfoWindow({
 													position: posi,
-													content: "<a href='http://www.grupllobet.com/apptest/App1/log_interaccions.php?url="+dades[l]+"&ID="+dades[i]+"&IdUser="+fIdUser+"'><img src='"+dades[im]+"'></a></br><a href='http://www.grupllobet.com/apptest/App1/log_interaccions.php?url="+dades[l]+"&ID="+dades[i]+"&IdUser="+fIdUser+"'>Visita</a></br>ID:"+dades[i]+"</br>Nom:"+dades[n]+"</br>Descripcio:"+dades[d]
+													content: 'ID:'+dades[i]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]
 												});
 											
 												infowindow.open(mapa,marca);
 												
-											}else{
+											/*}else{
 												var marca = new google.maps.Marker({
 													idMarcador:dades[i],
 													position:posi,
@@ -265,29 +264,26 @@
 												//UBICAR EL MARCADOR AL MAPA
 												marca.setMap(mapa);
 											}									
-										}									
+										}*/									
 										//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
 										marcadors_bd.push(marca);
 										
-										i=i+10;
-										n=n+10;
-										d=d+10;
-										y=y+10;
-										x=x+10;
-										l=l+10;
-										im=im+10;
-										alerta=alerta+10;
-										alertaImagen=alertaImagen+10;
-										alertaURL=alertaURL+10;
+										i=i+7;
+										n=n+7;
+										d=d+7;
+										y=y+7;
+										x=x+7;
+										f=f+7;
+										h=h+7;
 									}
 									
-									if(popup != false){
+									/*if(popup != false){
 										$('#contingut').html(content_popup);
 										$('#myDiv').show();
 									}									
 									
 								}
-							});
+							});*/
 						}
 					else
 						{
@@ -298,7 +294,7 @@
 					},
 					complete:function(){
 					}
-				});*/
+				});
 				
 			}
 			document.getElementById('Id').value = window.localStorage.getItem("Id");
@@ -306,10 +302,8 @@
 			//document.getElementById('LongX').value = llista[1];
 			//alert(window.localStorage.getItem("Id"));
 			/*function Refrescar(){       
-
 				location.reload();
 			}
-
 			setInterval(Refrescar,30000);*/
 			
 		
