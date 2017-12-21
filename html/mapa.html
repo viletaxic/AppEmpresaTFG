@@ -152,7 +152,8 @@
 						animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
 						draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
 					});
-
+					document.getElementById('LatY').value = llista[0];
+					document.getElementById('LongX').value = llista[1];
 					//PASSAR LES COORDENADES AL FORMULARI
 					//formulari.find("input[name='LongX']").val(llista[1]);
 					//formulari.find("input[name='LatY']").val(llista[0]);
@@ -304,7 +305,6 @@
 			//document.getElementById('LatY').value = llista[0];
 			//document.getElementById('LongX').value = llista[1];
 			//alert(window.localStorage.getItem("Id"));
-			alert(llista[0]);
 			/*function Refrescar(){       
 
 				location.reload();
