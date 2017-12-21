@@ -295,7 +295,10 @@
 				});*/
 				
 			}
-			alert(window.localStorage.getItem("Id"));
+			document.getElementById('Id').value = window.localStorage.getItem("Id");
+			document.getElementById('LatY').value = llista[0];
+			document.getElementById('LongX').value = llista[1];
+			//alert(window.localStorage.getItem("Id"));
 			/*function Refrescar(){       
 
 				location.reload();
