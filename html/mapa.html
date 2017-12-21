@@ -154,8 +154,8 @@
 					});
 
 					//PASSAR LES COORDENADES AL FORMULARI
-					//formulari.find("input[name='LongX']").val(llista[1]);
-					//formulari.find("input[name='LatY']").val(llista[0]);
+					formulari.find("input[name='LongX']").val(llista[1]);
+					formulari.find("input[name='LatY']").val(llista[0]);
 
 					//window.localStorage.setItem("LatY", llista[0]);
 					//window.localStorage.setItem("LongX", llista[1]);
@@ -301,8 +301,8 @@
 				
 			}
 			document.getElementById('Id').value = window.localStorage.getItem("Id");
-			document.getElementById('LatY').value = llista[0];
-			document.getElementById('LongX').value = llista[1];
+			//document.getElementById('LatY').value = llista[0];
+			//document.getElementById('LongX').value = llista[1];
 			//alert(window.localStorage.getItem("Id"));
 			/*function Refrescar(){       
 
