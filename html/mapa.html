@@ -154,8 +154,8 @@
 					});
 
 					//PASSAR LES COORDENADES AL FORMULARI
-					formulari.find("input[name='LongX']").val(llista[1]);
-					formulari.find("input[name='LatY']").val(llista[0]);
+					//formulari.find("input[name='LongX']").val(llista[1]);
+					//formulari.find("input[name='LatY']").val(llista[0]);
 
 					//window.localStorage.setItem("LatY", llista[0]);
 					//window.localStorage.setItem("LongX", llista[1]);
@@ -304,6 +304,7 @@
 			//document.getElementById('LatY').value = llista[0];
 			//document.getElementById('LongX').value = llista[1];
 			//alert(window.localStorage.getItem("Id"));
+			alert(llista[0]);
 			/*function Refrescar(){       
 
 				location.reload();
@@ -333,15 +334,15 @@
 		<form id="formulari">
 			<table>	
 				<tr>
-					<td><label for="Id">Email:</label></td>
+					<td><label for="Id">Id:</label></td>
 					<td><input type="text" disabled="disabled" name="Id" id="Id" value=""/></td>
 				</tr>
 				<tr>
-					<td><label for="LatY">Password:</label></td>
+					<td><label for="LatY">LatY:</label></td>
 					<td><input type="text" disabled="disabled" name="LatY" id="LatY" value="" /></td>
 				</tr>
 				<tr>
-					<td><label for="LongX">Password:</label></td>
+					<td><label for="LongX">LongX:</label></td>
 					<td><input type="text" disabled="disabled" name="LongX" id="LongX" value="" /></td>
 				</tr>
 			</table>
