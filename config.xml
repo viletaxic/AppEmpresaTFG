@@ -46,7 +46,6 @@
     <plugin name="cordova-plugin-vibration"           source="npm" spec="~2.1.0" />
     <plugin name="cordova-plugin-whitelist"           source="npm" spec="~1.2.1" />
 
-      <icon src="icon.png" />
     <gap:splash src="splash.png" />
 
     <icon gap:platform="ios" src="res/icons/ios/icon-small.png" width="29" height="29" />
