@@ -86,7 +86,6 @@
 		}
 		
 		$(document).on("ready", function(){
-
 			var formulari = $("#formulari");
 		
 			var defaultPos = new google.maps.LatLng(19.289168,-99.653440);
@@ -163,12 +162,12 @@
 				});
 			}
 				
-
 			$.ajax({type: "POST", 
 				url: "http://158.109.8.89/php/llista.php",
 				dataType: "html",
 				success:function(data){
-					if(data != null)
+					alert(data);
+					/*if(data != null)
 					{
 						var dades = data.split("#");
 						
@@ -227,11 +226,10 @@
 				beforeSend:function(){
 				},
 				complete:function(){
-				}
+				}*/
 			});
 				
 			
-
 			document.getElementById('Id').value = window.localStorage.getItem("Id");
 			//document.getElementById('LatY').value = llista[0];
 			//document.getElementById('LongX').value = llista[1];
