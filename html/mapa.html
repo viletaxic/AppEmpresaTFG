@@ -186,7 +186,6 @@
 							//OBTENIR LES COORDENADES DEL PUNT
 							var posi = new google.maps.LatLng(dades[y], dades[x]);
 									
-							var posi = new google.maps.LatLng(dades[y], dades[x]);
 							
 							//CARREGAR LES PROPIETATS AL MARCADOR
 							var marca = new google.maps.Marker({
@@ -203,7 +202,7 @@
 							
 							var infowindow = new google.maps.InfoWindow({
 								position: posi,
-								content: 'ID:'+dades[i]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]
+								content: 'ID:'+dades[id]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>imatge:'+dades[im]
 							});
 						
 							infowindow.open(mapa,marca);
