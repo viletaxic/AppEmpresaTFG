@@ -191,9 +191,10 @@
 							
 							//CARREGAR LES PROPIETATS AL MARCADOR
 							var marca = new google.maps.Marker({
-								idMarcador:dades[i],
 								position:posi,
-								titol: dades[n]
+								icon:'../imatges/markerRd.png',
+								animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
+								draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
 							});
 							//alert("..Has fet click a "+marca.idMarcador+" - " +marca.titol );
 							
@@ -207,10 +208,10 @@
 								content: 'ID:'+dades[id]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>imatge:'+dades[im]
 							});
 						
-							infowindow.open(mapa,marca);
+							infowindow.open(mapa,marca);*/
 							
 							//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
-							marcadors_bd.push(marca);*/
+							marcadors_bd.push(marca);
 							
 							id=id+7;
 							n=n+7;
