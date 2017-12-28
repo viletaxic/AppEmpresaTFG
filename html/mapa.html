@@ -168,11 +168,11 @@
 				data:({IdEmpresa: fIdEmpresa}),
 				dataType: "text",
 				success:function(data){
-					//alert(data);
+					alert(data);
 					if(data != null)
 					{
 						var dades = data.split("#");
-						alert(dades);
+						//alert(dades);
 						var id = 0;
 						var n = 1;
 						var d = 2;
@@ -182,7 +182,7 @@
 						var im = 6;
 						
 							
-						for (;dades[id];) {
+						for (;dades[i];) {
 							//console.log(i);
 							//console.log(dades[id]);
 							//OBTENIR LES COORDENADES DEL PUNT
