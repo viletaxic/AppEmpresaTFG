@@ -181,19 +181,19 @@
 						var f = 5;
 						var im = 6;
 						
-						var i = 0;	
-						for (i=0;i<dades.length;i+7) {
-							console.log(i);
-							console.log(dades[i+id]);
+							
+						for (;dades[id];) {
+							//console.log(i);
+							//console.log(dades[id]);
 							//OBTENIR LES COORDENADES DEL PUNT
-							var posi = new google.maps.LatLng(dades[i+y], dades[i+x]);
+							var posi = new google.maps.LatLng(dades[y], dades[x]);
 									
 							
 							//CARREGAR LES PROPIETATS AL MARCADOR
 							var marca = new google.maps.Marker({
-								idMarcador:dades[i+id],
+								idMarcador:dades[id],
 								position:posi,
-								titol: dades[i+n]
+								titol: dades[n]
 								animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
 								draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
 							});
@@ -206,7 +206,7 @@
 							
 							var infowindow = new google.maps.InfoWindow({
 								position: posi,
-								content: 'ID:'+dades[i+id]+'</br>Nom:'+dades[i+n]+'</br>Descripcio:'+dades[i+d]+'</br>Data:'+dades[i+f]+'</br>imatge:'+dades[i+im]
+								content: 'ID:'+dades[id]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>imatge:'+dades[im]
 							});
 						
 							infowindow.open(mapa,marca);
@@ -214,13 +214,13 @@
 							//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
 							marcadors_bd.push(marca);
 							
-							/*id=id+7;
+							id=id+7;
 							n=n+7;
 							d=d+7;
 							y=y+7;
 							x=x+7;
 							f=f+7;
-							im=im+7;*/
+							im=im+7;
 						}
 					}
 				else
