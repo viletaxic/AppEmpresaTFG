@@ -172,7 +172,7 @@
 					if(data != null)
 					{
 						var dades = data.split("#");
-						
+						alert(dades);
 						var id = 0;
 						var n = 1;
 						var d = 2;
@@ -190,7 +190,7 @@
 							
 							//CARREGAR LES PROPIETATS AL MARCADOR
 							var marca = new google.maps.Marker({
-								idMarcador:dades[i],
+								idMarcador:dades[id],
 								position:posi,
 								titol: dades[n]
 							});
