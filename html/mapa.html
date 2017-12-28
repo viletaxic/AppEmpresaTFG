@@ -161,9 +161,11 @@
 					marcador.setMap(mapa);		
 				});
 			}
-				
+			var fIdEmpresa = window.localStorage.getItem("IdEmpresa");
+			
 			$.ajax({type: "POST", 
-				url: "http://158.109.8.89/php/llista.php",
+				url: "http://158.109.8.89/php/llistaEmpresa.php",
+				data:({IdEmpresa: fIdEmpresa}),
 				dataType: "text",
 				success:function(data){
 					alert(data);
@@ -227,7 +229,7 @@
 			});
 				
 			
-			document.getElementById('Id').value = window.localStorage.getItem("Id");
+			document.getElementById('IdEmpresa').value = window.localStorage.getItem("IdEmpresa");
 			//document.getElementById('LatY').value = llista[0];
 			//document.getElementById('LongX').value = llista[1];
 			//alert(window.localStorage.getItem("Id"));
@@ -259,7 +261,7 @@
 			<table>	
 				<tr>
 					<td><label for="Id">Id:</label></td>
-					<td><input type="text" disabled="disabled" name="Id" id="Id" value=""/></td>
+					<td><input type="text" disabled="disabled" name="IdEmpresa" id="IdEmpresa" value=""/></td>
 				</tr>
 				<tr>
 					<td><label for="LatY">LatY:</label></td>
