@@ -168,8 +168,8 @@
 				data:({IdEmpresa: fIdEmpresa}),
 				dataType: "text",
 				success:function(data){
-					alert(data);
-					/*if(data != null)
+					//alert(data);
+					if(data != null)
 					{
 						var dades = data.split("#");
 						
@@ -183,11 +183,13 @@
 						
 								
 						for (;dades[i];) {
-								
+							alert(dades[y]);
+							alert(dades[x]);
+							
 							//OBTENIR LES COORDENADES DEL PUNT
 							var posi = new google.maps.LatLng(dades[y], dades[x]);
-									
-							
+							alert(dades[posi]);		
+							/*
 							//CARREGAR LES PROPIETATS AL MARCADOR
 							var marca = new google.maps.Marker({
 								idMarcador:dades[i],
@@ -210,7 +212,7 @@
 							
 							//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
 							marcadors_bd.push(marca);
-							
+							*/
 							id=id+7;
 							n=n+7;
 							d=d+7;
@@ -218,6 +220,7 @@
 							x=x+7;
 							f=f+7;
 							im=im+7;
+							
 						}
 					}
 				else
