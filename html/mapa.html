@@ -182,7 +182,7 @@
 						var im = 6;
 						
 								
-						for (;dades[i];) {
+						//for (;dades[i];) {
 								
 							//OBTENIR LES COORDENADES DEL PUNT
 							var posi = new google.maps.LatLng(dades[y], dades[x]);
@@ -193,6 +193,8 @@
 								idMarcador:dades[id],
 								position:posi,
 								titol: dades[n]
+								animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
+								draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
 							});
 							//alert("..Has fet click a "+marca.idMarcador+" - " +marca.titol );
 							
@@ -218,7 +220,7 @@
 							x=x+7;
 							f=f+7;
 							im=im+7;
-						}
+						//}
 					}
 				else
 					{
