@@ -182,17 +182,17 @@
 						var im = 6;
 						
 								
-						//for (;dades[i];) {
+						for (i=0;i<dades.length;i+7) {
 								
 							//OBTENIR LES COORDENADES DEL PUNT
-							var posi = new google.maps.LatLng(dades[y], dades[x]);
+							var posi = new google.maps.LatLng(dades[i+y], dades[i+x]);
 									
 							
 							//CARREGAR LES PROPIETATS AL MARCADOR
 							var marca = new google.maps.Marker({
-								idMarcador:dades[id],
+								idMarcador:dades[i+id],
 								position:posi,
-								titol: dades[n]
+								titol: dades[i+n]
 								animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
 								draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
 							});
@@ -205,7 +205,7 @@
 							
 							var infowindow = new google.maps.InfoWindow({
 								position: posi,
-								content: 'ID:'+dades[id]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>imatge:'+dades[im]
+								content: 'ID:'+dades[i+id]+'</br>Nom:'+dades[i+n]+'</br>Descripcio:'+dades[i+d]+'</br>Data:'+dades[i+f]+'</br>imatge:'+dades[i+im]
 							});
 						
 							infowindow.open(mapa,marca);
@@ -213,14 +213,14 @@
 							//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
 							marcadors_bd.push(marca);
 							
-							id=id+7;
+							/*id=id+7;
 							n=n+7;
 							d=d+7;
 							y=y+7;
 							x=x+7;
 							f=f+7;
-							im=im+7;
-						//}
+							im=im+7;*/
+						}
 					}
 				else
 					{
