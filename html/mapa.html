@@ -169,10 +169,10 @@
 				dataType: "text",
 				success:function(data){
 					alert(data);
-					if(data != null)
+					/*if(data != null)
 					{
 						var dades = data.split("#");
-						//alert(dades);
+						
 						var id = 0;
 						var n = 1;
 						var d = 2;
@@ -181,21 +181,18 @@
 						var f = 5;
 						var im = 6;
 						
-							
+								
 						for (;dades[i];) {
-							//console.log(i);
-							//console.log(dades[id]);
+								
 							//OBTENIR LES COORDENADES DEL PUNT
 							var posi = new google.maps.LatLng(dades[y], dades[x]);
 									
 							
 							//CARREGAR LES PROPIETATS AL MARCADOR
 							var marca = new google.maps.Marker({
-								idMarcador:dades[id],
+								idMarcador:dades[i],
 								position:posi,
 								titol: dades[n]
-								animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
-								draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
 							});
 							//alert("..Has fet click a "+marca.idMarcador+" - " +marca.titol );
 							
@@ -226,7 +223,7 @@
 				else
 					{
 						alert("No hi ha dades");
-					}
+					}*/
 				}
 				
 			});
