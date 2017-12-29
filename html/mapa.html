@@ -163,7 +163,7 @@
 			}
 			var fIdEmpresa = window.localStorage.getItem("IdEmpresa");
 			
-			$.ajax({type: "POST", 
+			/*$.ajax({type: "POST", 
 				url: "http://158.109.8.89/php/llistaEmpresa.php",
 				data:({IdEmpresa: fIdEmpresa}),
 				dataType: "text",
@@ -203,12 +203,12 @@
 							//UBICAR EL MARCADOR AL MAPA
 							marca.setMap(mapa);
 							
-							/*var infowindow = new google.maps.InfoWindow({
+							var infowindow = new google.maps.InfoWindow({
 								position: posi,
 								content: 'ID:'+dades[id]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>imatge:'+dades[im]
 							});
 						
-							infowindow.open(mapa,marca);*/
+							infowindow.open(mapa,marca);
 							
 							//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
 							marcadors_bd.push(marca);
@@ -229,7 +229,7 @@
 					}
 				}
 				
-			});
+			});*/
 				
 			
 			document.getElementById('IdEmpresa').value = window.localStorage.getItem("IdEmpresa");
@@ -241,7 +241,7 @@
 			}
 			setInterval(Refrescar,30000);*/
 			
-		
+			
 			
 			
 		});
