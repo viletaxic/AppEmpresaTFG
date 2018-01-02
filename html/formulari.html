@@ -10,8 +10,8 @@
 	<script type="text/javascript" src="js/md5.js"></script>
 	<script>
 		$(document).on("ready", function(){
-			var fLatY = window.localStorage.getItem("LatY");
-			alert(fLatY);
+			document.getElementById('LatY').value = window.localStorage.getItem("LatY");
+			document.getElementById('LongX').value = window.localStorage.getItem("LongX");
 			/*
 			var formulari = $("#formulari");
 
@@ -23,7 +23,7 @@
 			
 			formulari.find("input[name='LatY']").val(LatY);
 			formulari.find("input[name='LongX']").val(LongX);
-			/*
+			*/
 		);}
 	</script>
 </head>
