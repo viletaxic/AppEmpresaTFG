@@ -146,10 +146,8 @@
 					//PASSAR LES COORDENADES AL FORMULARI
 					//formulari.find("input[name='LongX']").val(llista[1]);
 					//formulari.find("input[name='LatY']").val(llista[0]);
-					window.localStorage.setItem("LatY", llista[0]);
-					window.localStorage.setItem("LongX", llista[1]);
-					alert(window.logalStorage.getItem("LatY"));
-					alert(window.logalStorage.getItem("LongX"));
+					//window.localStorage.setItem("LatY", llista[0]);
+					//window.localStorage.setItem("LongX", llista[1]);
 					//DEIXAR NOMÉS 1 MARCADOR AL MAPA
 					//GUARDAR EL MARCADOR A L'ARRAY
 					marcadors_nous.push(marcador);
@@ -235,6 +233,14 @@
 				
 			
 			document.getElementById('IdEmpresa').value = window.localStorage.getItem("IdEmpresa");
+			
+			$("#ferlogin").click(function(){
+				var fLatY = llista[0];
+				var fLongX = llista[1];
+				window.localStorage.setItem("LatY", fLatY);
+				window.localStorage.setItem("LongX", fLongX);
+				window.location.href="formulari.html";
+			});
 			//document.getElementById('LatY').value = llista[0];
 			//document.getElementById('LongX').value = llista[1];
 			//alert(window.localStorage.getItem("Id"));
