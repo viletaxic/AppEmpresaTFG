@@ -18,6 +18,7 @@
 				var fDescripcio = $("#Descripcio").val();
 				var fLatY = $("#LatY").val();
 				var fLongX = $("#LongX").val();
+				var fIdEmpresa = window.localStorage.getItem("IdEmpresa");
 				if(fNom == ""){
 					alert('Nom necessari');
 					$("#Nom").focus();
@@ -32,7 +33,7 @@
 						$("#LongX").val("");
 						$.ajax({type: "POST",
 						  url:"http://158.109.8.89/php/registre_oferta.php",
-						  data:({Nom: fNom, Descripcio: fDescripcio, LatY: fLatY, LongX: fLongX}),
+						  data:({Nom: fNom, Descripcio: fDescripcio, LatY: fLatY, LongX: fLongX, IdEmpresa: fIdEmpresa}),
 						  cache: false,
 						  dataType: "text",
 						  success: Enviar
