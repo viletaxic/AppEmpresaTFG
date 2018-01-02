@@ -237,11 +237,8 @@
 			document.getElementById('IdEmpresa').value = window.localStorage.getItem("IdEmpresa");
 			
 			$("#formu").click(function(){
-				var fLatY = $("LatY").val();
-				var fLongX = $("LongX").val();
-				alert(fLatY);
-				window.localStorage.setItem("LatY", fLatY);
-				window.localStorage.setItem("LongX", fLongX);
+				alert(window.localStorage.getItem("LatY"));
+				alert(window.localStorage.getItem("LongX"));
 				window.location.href="formulari.html";
 			});
 			//document.getElementById('LatY').value = llista[0];
