@@ -12,6 +12,39 @@
 		$(document).on("ready", function(){
 			document.getElementById('LatY').value = window.localStorage.getItem("LatY");
 			document.getElementById('LongX').value = window.localStorage.getItem("LongX");
+			
+			$("#ferregistre").click(function(){
+				var fNom = $("#Nom").val();
+				var fDescripcio = $("#Descripcio").val();
+				var fLatY = $("#LatY").val();
+				var fLongX = $("#LongX").val();
+				if(fNom == ""){
+					alert('Nom necessari');
+					$("#Nom").focus();
+				}else{
+					if(fDescripcio == ""){
+						alert('Descripció necessaria');
+						$("#Descripcio").focus();
+					}else{
+						$("#Nom").val("");
+						$("#Descripcio").val("");
+						$("#LatY").val("");
+						$('#LongX").val("");
+						$.ajax({type: "POST",
+						  url:"http://158.109.8.89/php/registre_oferta.php",
+						  data:({Nom: fNom, Descripcio: fDescripcio, LatY: fLatY, LongX: fLongX}),
+						  cache: false,
+						  dataType: "text",
+						  success: Enviar
+						});
+						function Enviar(data){
+							alert(data);
+							location.href="mapa.html";
+						}
+					}
+				}
+			});
+			
 			/*
 			var formulari = $("#formulari");
 
@@ -34,12 +67,12 @@
 
 		<!--------INICIA FORMULARIO------>
 		<div data-role="fieldcontain">
-			<label for="Nombre">Nombre:</label>
-			<input type="text" name="Nombre" id="Nombre" value=""  />
+			<label for="Nom">Nom:</label>
+			<input type="text" name="Nom" id="Nom" value=""  />
 		</div>
 		<div data-role="fieldcontain">
-			<label for="Descripcion">Descripció:</label>
-			<textarea cols="40" rows="8"  name="Descripcion" id="Descripcion" value=""  /></textarea>
+			<label for="Descripcio">Descripció:</label>
+			<textarea cols="40" rows="8"  name="Descripcio" id="Descripcio" value=""  /></textarea>
 		</div>
 		<div data-role="fieldcontain">
 			<label for="LatY">Latitud:</label>
