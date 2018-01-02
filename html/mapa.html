@@ -141,8 +141,10 @@
 						animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
 						draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
 					});
-					document.getElementById('LatY').value = llista[0];
-					document.getElementById('LongX').value = llista[1];
+					window.localStorage.setItem("LatY", llista[0]);
+					window.localStorage.setItem("LongX", llista[1]);
+					document.getElementById('LatY').value = window.localStorage.getItem("LatY");//llista[0];
+					document.getElementById('LongX').value = window.localStorage.getItem("LongX");//llista[1];
 					//PASSAR LES COORDENADES AL FORMULARI
 					//formulari.find("input[name='LongX']").val(llista[1]);
 					//formulari.find("input[name='LatY']").val(llista[0]);
