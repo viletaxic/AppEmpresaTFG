@@ -70,7 +70,7 @@
 					 processData: false,
 					 success: function(data) {
 					 	alert(data);
-						//location.href="mapa.html";
+						location.href="mapa.html";
 					 }
 				}); 
 				return false;
@@ -91,7 +91,7 @@
 		<form id='myform'>		
 		<div data-role="fieldcontain">
 			<label for="IdEmpresa">IdEmpresa:</label>
-			<input type="text" disabled="disabled" name="IdEmpresa" id="IdEmpresa" value=""  />
+			<input type="hidden" name="IdEmpresa" id="IdEmpresa" value=""  />
 		</div>
 		<div data-role="fieldcontain">
 			<label for="Nombre">Nombre:</label>
@@ -103,11 +103,11 @@
 		</div>
 		<div data-role="fieldcontain">
 			<label for="LatY">Latitud:</label>
-			<input type="text" disabled="disabled" name="LatY" id="LatY" value=""  />
+			<input type="hidden" name="LatY" id="LatY" value=""  />
 		</div>
 		<div data-role="fieldcontain">
 			<label for="LongX">Longitud:</label>
-			<input type="text" disabled="disabled" name="LongX" id="LongX" value="" />
+			<input type="hidden" name="LongX" id="LongX" value="" />
 		</div>
 		<div data-role="fieldcontain">
 			<label for="Data">Data:</label>
