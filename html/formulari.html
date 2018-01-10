@@ -91,7 +91,7 @@
 		<form id='myform'>		
 		<div data-role="fieldcontain">
 			<label for="IdEmpresa">IdEmpresa:</label>
-			<input type="hidden" name="IdEmpresa" id="IdEmpresa" value=""  />
+			<input type="text" disabled="disabled" name="IdEmpresa" id="IdEmpresa" value=""  />
 		</div>
 		<div data-role="fieldcontain">
 			<label for="Nombre">Nombre:</label>
@@ -103,11 +103,11 @@
 		</div>
 		<div data-role="fieldcontain">
 			<label for="LatY">Latitud:</label>
-			<input type="hidden" name="LatY" id="LatY" value=""  />
+			<input type="text" disabled="disabled" name="LatY" id="LatY" value=""  />
 		</div>
 		<div data-role="fieldcontain">
 			<label for="LongX">Longitud:</label>
-			<input type="hidden" name="LongX" id="LongX" value="" />
+			<input type="text" disabled="disabled" id="LongX" value="" />
 		</div>
 		<div data-role="fieldcontain">
 			<label for="Data">Data:</label>
@@ -121,6 +121,19 @@
 			<label for="Imagen">Imatge:</label>
 			<input name="uploadedfile" id="uploadedfile" type="file" />
 		</div>
+		<div data-role="fieldcontain">
+			<label for="IdEmpresa"></label>
+			<input type="hidden" name="IdEmpresa" id="IdEmpresa" value=""  />
+		</div>
+		<div data-role="fieldcontain">
+			<label for="LatY"></label>
+			<input type="hidden" name="LatY" id="LatY" value=""  />
+		</div>
+		<div data-role="fieldcontain">
+			<label for="LongX"></label>
+			<input type="hidden" name="LongX" id="LongX" value="" />
+		</div>
+
 		<input type="submit" data-theme="a" id="ferregistre" value="Enviar">
 		<button type="button" onclick="window.location.href='mapa.html'">Torna al mapa</button>
 		</form>
