@@ -12,6 +12,7 @@
 		$(document).on("ready", function(){
 			document.getElementById('LatY').value = window.localStorage.getItem("LatY");
 			document.getElementById('LongX').value = window.localStorage.getItem("LongX");
+			document.getElementById('IdEmpresa').value = window.localStorage.getItem("IdEmpresa");
 			
 			/*$("#ferregistre").click(function(){
 				var fNom = $("#Nom").val();
@@ -88,6 +89,10 @@
 
 		<!--------INICIA FORMULARIO------>
 		<form id='myform'>		
+		<div data-role="fieldcontain">
+			<label for="IdEmpresa">IdEmpresa:</label>
+			<input type="text" disabled="disabled" name="IdEmpresa" id="IdEmpresa" value=""  />
+		</div>
 		<div data-role="fieldcontain">
 			<label for="Nombre">Nombre:</label>
 			<input type="text" name="Nom" id="Nom" value=""  />
