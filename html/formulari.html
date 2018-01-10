@@ -10,6 +10,10 @@
 	<script type="text/javascript" src="js/md5.js"></script>
 	<script>
 		$(document).on("ready", function(){
+			document.getElementById('LatY_visible').value = localStorage.getItem("LatY");
+			document.getElementById('LongX_visible').value = localStorage.getItem("LongX");
+			document.getElementById('IdEmpresa_visible').value = localStorage.getItem("IdEmpresa");
+
 			document.getElementById('LatY').value = localStorage.getItem("LatY");
 			document.getElementById('LongX').value = localStorage.getItem("LongX");
 			document.getElementById('IdEmpresa').value = localStorage.getItem("IdEmpresa");
@@ -90,8 +94,8 @@
 		<!--------INICIA FORMULARIO------>
 		<form id='myform'>		
 		<div data-role="fieldcontain">
-			<label for="IdEmpresa">IdEmpresa:</label>
-			<input type="text" disabled="disabled" name="IdEmpresa" id="IdEmpresa" value=""  />
+			<label for="IdEmpresa_visible">IdEmpresa:</label>
+			<input type="text" disabled="disabled" name="IdEmpresa_visible" id="IdEmpresa_visible" value=""  />
 		</div>
 		<div data-role="fieldcontain">
 			<label for="Nombre">Nombre:</label>
@@ -102,12 +106,12 @@
 			<textarea cols="40" rows="8"  name="Descripcio" id="Descripcio" value=""  /></textarea>
 		</div>
 		<div data-role="fieldcontain">
-			<label for="LatY">Latitud:</label>
-			<input type="text" disabled="disabled" name="LatY" id="LatY" value=""  />
+			<label for="LatY_visible">Latitud:</label>
+			<input type="text" disabled="disabled" name="LatY_visible" id="LatY_visible" value=""  />
 		</div>
 		<div data-role="fieldcontain">
-			<label for="LongX">Longitud:</label>
-			<input type="text" disabled="disabled" id="LongX" value="" />
+			<label for="LongX_visible">Longitud:</label>
+			<input type="text" disabled="disabled" name="LongX_visible" id="LongX_visible" value="" />
 		</div>
 		<div data-role="fieldcontain">
 			<label for="Data">Data:</label>
