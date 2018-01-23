@@ -5,6 +5,10 @@
 		left:2%;
 		position:absolute;
 	}
+	#capturades{
+		left:2%;
+		position:absolute;
+	}
 	#Tornar{
 		bottom:0px;
 		left:2%;
@@ -25,8 +29,7 @@ $(function(){
 	$(document).on("ready", function(){
 				
 		var fIdEmpresa = window.localStorage.getItem("IdEmpresa");
-		//$("#ID").val(" ");
-				
+		
 		$.ajax({type: "POST",
 			url:"http://158.109.8.89/php/ofertesEmpresa.php",
 			data:({IdEmpresa: fIdEmpresa}),
@@ -34,9 +37,20 @@ $(function(){
 			success: Buscar
 			
 		});
+
+		$.ajax({type: "POST",
+			url:"http://158.109.8.89/php/ofertesCapturades.php",
+			data:({IdEmpresa: fIdEmpresa}),
+			dataType: "text",
+			success: BuscarCapturades
+			
+		});
 	});
 	function Buscar(data){
 		$('#llistat').html(data);		
+	}
+	function BuscarCapturades(data){
+		$('#capturades').html(data);		
 	}
 });	
 </script>
@@ -44,6 +58,10 @@ $(function(){
 <body>
 	<h1>OFERTES ACTIVES</h1>
 	<div id="llistat">
+		
+	</div>
+	<h1>OFERTES CAPTURADES</h1>
+	<div id="capturades">
 		
 	</div>	
 	<div id="Tornar">
