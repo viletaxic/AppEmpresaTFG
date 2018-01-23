@@ -13,57 +13,15 @@
 			document.getElementById('LatY_visible').value = localStorage.getItem("LatY");
 			document.getElementById('LongX_visible').value = localStorage.getItem("LongX");
 			document.getElementById('IdEmpresa_visible').value = localStorage.getItem("IdEmpresa");
-
 			document.getElementById('LatY').value = localStorage.getItem("LatY");
 			document.getElementById('LongX').value = localStorage.getItem("LongX");
 			document.getElementById('IdEmpresa').value = localStorage.getItem("IdEmpresa");
 			
-			/*$("#ferregistre").click(function(){
-				var fNom = $("#Nom").val();
-				var fDescripcio = $("#Descripcio").val();
-				var fLatY = $("#LatY").val();
-				var fLongX = $("#LongX").val();
-				var fIdEmpresa = window.localStorage.getItem("IdEmpresa");
-				var fData = $("#Data").val();
-				var fHora = $("#Hora").val();
-				//var fileToUpload = $('#uploadedfile').prop('files')[0];
-				
-				var form = document.getElementById("myform");
-				
-				if(fNom == ""){
-					alert('Nom necessari');
-					$("#Nom").focus();
-				}else{
-					if(fDescripcio == ""){
-						alert('Descripció necessaria');
-						$("#Descripcio").focus();
-					}else{
-						$("#Nom").val("");
-						$("#Descripcio").val("");
-						$("#LatY").val("");
-						$("#LongX").val("");
-						$("#Data").val("");
-						$("#Hora").val("");
-						$.ajax({type: "POST",
-						  url:"http://158.109.8.89/php/registre_oferta.php",
-						  datatype: 'multipart/form-data',
-						  data:({Nom: fNom, Descripcio: fDescripcio, LatY: fLatY, LongX: fLongX, Data: fData, Hora: fHora, IdEmpresa: fIdEmpresa, fileToUpload: fileToUpload}),
-						  cache: false,
-						  success: Enviar
-						});
-						function Enviar(data){
-							alert(data);
-							location.href="mapa.html";
-						}
-					}
-				}
-			});*/
 			
 			$("#myform").submit(function(e) {
 				
 				e.preventDefault();
 				var formData = new FormData($(this)[0]);
-
 				$.ajax({  
 					 type: "POST",  
 					 url:"http://158.109.8.89/php/registre_oferta.php",
@@ -98,11 +56,15 @@
 			<input type="text" disabled="disabled" name="IdEmpresa_visible" id="IdEmpresa_visible" value=""  />
 		</div>
 		<div data-role="fieldcontain">
-			<label for="Nombre">Nombre:</label>
+			<label for="Nombre">Nom de l'Empresa</label>
 			<input type="text" name="Nom" id="Nom" value=""  />
 		</div>
 		<div data-role="fieldcontain">
-			<label for="Descripcion">Descripció:</label>
+			<label for="Nombre">Direcció</label>
+			<input type="text" name="Direccio" id="Direccio" value=""  />
+		</div>
+		<div data-role="fieldcontain">
+			<label for="Descripcion">Descripció de l'oferta:</label>
 			<textarea cols="40" rows="8"  name="Descripcio" id="Descripcio" value=""  /></textarea>
 		</div>
 		<div data-role="fieldcontain">
@@ -114,11 +76,11 @@
 			<input type="text" disabled="disabled" name="LongX_visible" id="LongX_visible" value="" />
 		</div>
 		<div data-role="fieldcontain">
-			<label for="Data">Data:</label>
+			<label for="Data">Dia de caducitat:</label>
 			<input type="date" name="Data" id="Data">
 		</div>
 		<div data-role="fieldcontain">
-			<label for="Hora">Hora:</label>
+			<label for="Hora">Hora de caducitat:</label>
 			<input type="time" name="Hora" id="Hora">
 		</div>
 		<div>
