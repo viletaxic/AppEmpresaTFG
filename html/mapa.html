@@ -11,17 +11,6 @@
 			left:0px;
 			right:0px;
 		}
-		/*#infor{
-			bottom:0px;
-			left:0px;
-			position:absolute;
-			display: none;
-		}
-		#refresh{
-			bottom:0px;
-			right:0px;
-			position:absolute;
-		}*/
 		#formu{
 			bottom:0px;
 			left:0px;
@@ -38,27 +27,6 @@
 			left:50%;
 			position:absolute;
 		}
-		/*#myDiv {
-		   position: absolute;
-		   top: 0;
-		   left: 0;
-		   width: 100vw;
-		   height: 100vh;
-		   background-color: rgba(0,0,0,0.6);
-		   z-index: 10;
-		   display: none;
-		}
-		#contingut{
-			background-color: white;
-			width:80%;
-			height:80%;
-			margin: auto;
-			text-align: center;
-			overflow: scroll;
-		}
-		#contingut2{
-			text-align: center;
-		}*/
 	</style>
 	<!--ESTILS DE BOOTSTRAP -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet"/>
@@ -154,11 +122,6 @@
 					window.localStorage.setItem("LongX", llista[1]);
 					document.getElementById('LatY').value = window.localStorage.getItem("LatY");//llista[0];
 					document.getElementById('LongX').value = window.localStorage.getItem("LongX");//llista[1];
-					//PASSAR LES COORDENADES AL FORMULARI
-					//formulari.find("input[name='LongX']").val(llista[1]);
-					//formulari.find("input[name='LatY']").val(llista[0]);
-					//window.localStorage.setItem("LatY", llista[0]);
-					//window.localStorage.setItem("LongX", llista[1]);
 					//DEIXAR NOMÉS 1 MARCADOR AL MAPA
 					//GUARDAR EL MARCADOR A L'ARRAY
 					marcadors_nous.push(marcador);
@@ -174,92 +137,11 @@
 			}
 			var fIdEmpresa = window.localStorage.getItem("IdEmpresa");
 			
-			/*$.ajax({type: "POST", 
-				url: "http://158.109.8.89/php/llistaEmpresa.php",
-				data:({IdEmpresa: fIdEmpresa}),
-				dataType: "text",
-				success:function(data){
-					//alert(data);
-					if(data != null)
-					{
-						var dades = data.split("#");
-						
-						var id = 0;
-						var n = 1;
-						var d = 2;
-						var y = 3;
-						var x = 4;
-						var f = 5;
-						var im = 6;
-								
-						for (;dades[id];) {
-							alert(dades[y]);
-							alert(dades[x]);
-							
-							//OBTENIR LES COORDENADES DEL PUNT
-							var posi = new google.maps.LatLng(dades[y], dades[x]);
-							alert(posi);		
-							
-							//CARREGAR LES PROPIETATS AL MARCADOR
-							var marca = new google.maps.Marker({
-								position:posi,
-								icon:'../imatges/markerRd.png',
-								animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
-								draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
-							});
-							//alert("..Has fet click a "+marca.idMarcador+" - " +marca.titol );
-							
-							
-							
-							//UBICAR EL MARCADOR AL MAPA
-							marca.setMap(mapa);
-							
-							var infowindow = new google.maps.InfoWindow({
-								position: posi,
-								content: 'ID:'+dades[id]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>imatge:'+dades[im]
-							});
-						
-							infowindow.open(mapa,marca);
-							
-							//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
-							marcadors_bd.push(marca);
-							
-							id=id+7;
-							n=n+7;
-							d=d+7;
-							y=y+7;
-							x=x+7;
-							f=f+7;
-							im=im+7;
-							
-						}
-					}
-				else
-					{
-						alert("No hi ha dades");
-					}
-				}
-				
-			});*/
-				
-			
 			document.getElementById('IdEmpresa').value = window.localStorage.getItem("IdEmpresa");
 			
 			$("#formu").click(function(){
-				//alert(window.localStorage.getItem("LatY"));
-				//alert(window.localStorage.getItem("LongX"));
 				window.location.href="formulari.html";
 			});
-			//document.getElementById('LatY').value = llista[0];
-			//document.getElementById('LongX').value = llista[1];
-			//alert(window.localStorage.getItem("Id"));
-			/*function Refrescar(){       
-				location.reload();
-			}
-			setInterval(Refrescar,30000);*/
-			
-			
-			
 			
 		});
 	</script>
@@ -268,11 +150,8 @@
 	<div data-role="page" id="paginaMapa" data-url="map-page">
 		<div id="mapa"></div>
 		
-		<!--<button id="refresh" onclick=location.reload()>Refrescar</button>-->
-		
 		<input type="button" id="llista" onclick="location.href='llistat_ofertes.html';" value="Ofertes" />
 		
-		<!--<input type="button" id="form" onclick="location.href='formulari.html';" value="Formulari" />-->
 		<button id="formu" name="formu">Formulari</button>
 		
 	</div>
@@ -295,34 +174,5 @@
 		</form>
 		</br>
 	</div>
-	
-	<!--<div id="infor">
-		<form id="formulari">
-			<table>				
-				<tr>
-					<td><label for="LatY">Latitud:</label></td>
-					<td><input type="text" disabled="disabled" name="LatY" id="LatY" value=""  /></td>
-				</tr>
-				<tr>
-					<td><label for="LongX">Longitud:</label></td>
-					<td><input type="text" disabled="disabled" name="LongX" id="LongX" value="" /></td>
-				</tr>
-			</table>
-		</form>
-	</div>
-	<div id='myDiv'>
-		<div id='contingut'>
-			
-		</div>
-		<div id='contingut2'>
-			<button onclick='theFunction();'>tancar</button>
-						
-			<script type="text/javascript">
-				function theFunction(){
-					document.getElementById('myDiv').style.display = 'none';
-				}
-			</script>
-		</div>
-	</div>	-->
 </body>
 </html>
