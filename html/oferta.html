@@ -33,7 +33,6 @@ $(function(){
 		    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 		}		
 		var fidOferta = getParameterByName('idOferta');;
-		//$("#ID").val(" ");
 				
 		$.ajax({type: "POST",
 			url:"http://158.109.8.89/php/oferta.php",
@@ -42,7 +41,6 @@ $(function(){
 			success: Buscar
 			
 		});
-
 		$("#borra").click(function(){
 				
 			$.ajax({type: "POST",
